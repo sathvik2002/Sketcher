@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+          box-sizing: border-box;
+          margin: 0;
+          padding: 0;
+        }
+        .container{
+            display: grid;
+            width: 400px;
+            grid-template-columns: repeat(20,1fr);
+            gap: 0;
+            margin: 50px;
+        }
+
+        .container div{
+            height: 20px;
+            width: 20px;
+            border: 1px solid black;
+        }
+
+        .active-red{
+            background-color: red;
+        }
+
+        .active-green{
+            background-color: green;
+        }
+
+        .active-yellow{
+            background-color: yellow;
+        }
+
+        .active-black{
+            background-color: black;
+        }
+
+        .green{
+            background-color: green;
+        }
+
+        .red{
+            background-color: red;
+        }
+
+        .black{
+            background-color: black;
+        }
+        .yellow{
+            background-color: yellow;
+        }
+
+
+        .btn{
+            height: 40px;
+            width: 40px;
+            border: 0;
+            border-radius: 50%;
+        }
+        .btn:hover{
+            cursor: pointer;
+        }
+
+        .header{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 400px;
+            margin: 20px 0px 0px 50px;
+        }
+
+        .header button{
+            margin: 10px;
+        }
+
+        .bt{
+            padding: 15px;
+            border: none;
+            border-radius: 15px;
+        }
+        .bt:hover{
+            cursor: pointer;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="header">
+       <button class="bt reset">reset</button>
+       <button class="btn green"></button>
+       <button class="btn red"></button>
+       <button class="btn yellow"></button>
+       <button class="btn black"></button>
+       <button class="bt eraser">eraser</button>
+    </div>
+    <div class="container"></div>
+</body>
+<script>
+    const cont = document.querySelector('.container');
+    for(let i =0;i<400;i++){
+        const pixel = document.createElement('div');
+        pixel.classList.add('pix');
+        cont.appendChild(pixel);
+    }
+
+    const pix = document.querySelectorAll('.pix');
+
+    const reset_btn = document.querySelector('.reset');
+    reset_btn.addEventListener('click',()=>{
+        pix.forEach((pixel)=>{
+        pixel.classList.remove('active-green');
+        pixel.classList.remove('active-red');
+        pixel.classList.remove('active-yellow');
+        pixel.classList.remove('active-black');
+       })
+    })
+
+    
+
+    const green_btn = document.querySelector('.green');
+    const red_btn = document.querySelector('.red');
+    const yellow_btn = document.querySelector('.yellow');
+    const black_btn = document.querySelector('.black');
+    const eraser_btn = document.querySelector('.eraser');
+    
+    green_btn.addEventListener('click',()=>{
+        pix.forEach((pixel)=>{
+        pixel.addEventListener('mouseover',(e)=>{
+            e.target.classList.add('active-green');
+            e.target.classList.remove('active-red');
+            e.target.classList.remove('active-yellow');
+            e.target.classList.remove('active-black');
+        });
+    })
+    })
+
+    eraser_btn.addEventListener('click',()=>{
+        pix.forEach((pixel)=>{
+        pixel.addEventListener('mouseover',(e)=>{
+            e.target.classList.remove('active-green');
+            e.target.classList.remove('active-red');
+            e.target.classList.remove('active-yellow');
+            e.target.classList.remove('active-black');
+        });
+    })
+    })
+
+    red_btn.addEventListener('click',()=>{
+        pix.forEach((pixel)=>{
+        pixel.addEventListener('mouseover',(e)=>{
+            e.target.classList.add('active-red');
+            e.target.classList.remove('active-yellow');
+            e.target.classList.remove('active-black');
+            e.target.classList.remove('active-green');
+        });
+    })
+    })
+
+    black_btn.addEventListener('click',()=>{
+        pix.forEach((pixel)=>{
+        pixel.addEventListener('mouseover',(e)=>{
+            e.target.classList.add('active-black');
+            e.target.classList.remove('active-red');
+            e.target.classList.remove('active-yellow');
+            e.target.classList.remove('active-green');
+        });
+    })
+    })
+
+    yellow_btn.addEventListener('click',()=>{
+        pix.forEach((pixel)=>{
+        pixel.addEventListener('mouseover',(e)=>{
+            e.target.classList.add('active-yellow');
+            e.target.classList.remove('active-red');
+            e.target.classList.remove('active-black');
+            e.target.classList.remove('active-green');
+        });
+    })
+    })
+
+    
+
+
+
+
+
+
+</script>
+</html>
